@@ -7,5 +7,10 @@
 </form>
 
 <ul>
-  <li *ngFor="let task of tasks">{{task.value}}</li>
+  <li *ngFor="let task of tasks$ | async">
+    {{task.value}}
+    <button mat-icon-button (click)="remove(task.id)">
+        <mat-icon>delete_sweep</mat-icon>
+    </button>
+  </li>
 </ul>

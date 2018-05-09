@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BoardItem } from '../model/board.model';
+import { TaskService } from '../services/task.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-board',
@@ -8,26 +10,24 @@ import { BoardItem } from '../model/board.model';
 })
 export class BoardComponent implements OnInit {
 
-  public tasks: BoardItem[] = [
-    { value: 'feed the cat', isDone: false },
-    { value: 'feed the dog', isDone: false },
-  ];
-
   public newTask: string;
 
-  constructor() { }
+  public tasks$: Observable<BoardItem[]>;
+
+  constructor(
+    private taskService: TaskService
+  ) { }
 
   ngOnInit() {
+    this.tasks$ = this.taskService.tasks$;
   }
 
-  addTask() {
-    console.log('Added');
-    const newItem: BoardItem = {
-      isDone: false,
-      value: this.newTask
-    };
-
-    this.tasks.push(newItem);
+  public addTask() {
+    this.taskService.addTask(this.newTask);
     this.newTask = '';
+  }
+
+  public remove(id: number) {
+    this.taskService.remove(id);
   }
 }

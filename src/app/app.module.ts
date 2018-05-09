@@ -9,6 +9,7 @@ import { MatToolbarModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
+import { MatIconModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 
@@ -30,6 +31,7 @@ import { BoardComponent } from './board/board.component';
     MatToolbarModule,
     MatButtonModule,
     MatInputModule,
+    MatIconModule,
     MatFormFieldModule,
     RouterModule.forRoot(ROUTES),
   ],
