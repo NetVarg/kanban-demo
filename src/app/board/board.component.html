@@ -1,3 +1,11 @@
-<p>
-  board works!
-</p>
+<form class="example-form" (ngSubmit)="addTask()">
+  <mat-form-field>
+    <input name="newTaks" matInput [(ngModel)]="newTask" placeholder="new Task">
+  </mat-form-field>
+
+  <button mat-button type="submit">Save</button>
+</form>
+
+<ul>
+  <li *ngFor="let task of tasks">{{task.value}}</li>
+</ul>
